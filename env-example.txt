@@ -1,0 +1,14 @@
+# Environment Variables Template
+# Copy this file to .env and fill in your values
+
+# Database (for future use)
+DATABASE_URL=sqlite:///./multibank.db
+
+# Email Settings (for future use)
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your-email@gmail.com
+SMTP_PASSWORD=your-app-password
+
+# Admin Settings
+ADMIN_EMAIL=admin@whatson.agency

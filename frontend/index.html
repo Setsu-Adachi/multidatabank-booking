@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>West Midlands Multibank - Booking</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark: #1a3a2a;
+    --green-mid: #2d6a4f;
+    --green-light: #74c69d;
+    --green-pale: #d8f3dc;
+    --cream: #faf7f2;
+    --text-primary: #1a2e1f;
+    --text-secondary: #4a6655;
+    --available: #52b788;
+    --full: #e07a5f;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #e8ede9;
+    color: var(--text-primary);
+    padding: 20px;
+    line-height: 1.6;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  header {
+    background: var(--green-dark);
+    color: white;
+    padding: 24px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    opacity: 0.8;
+    font-size: 0.95rem;
+  }
+
+  .section {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 1.5px solid #e0ede5;
+  }
+
+  .section-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--green-dark);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--green-pale);
+  }
+
+  .slot-card {
+    background: var(--cream);
+    border: 1.5px solid #e0ede5;
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: box-shadow 0.2s;
+  }
+
+  .slot-card:hover {
+    box-shadow: 0 4px 12px rgba(26,58,42,0.1);
+  }
+
+  .slot-card.full {
+    opacity: 0.6;
+  }
+
+  .slot-time {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+  }
+
+  .slot-info {
+    flex: 1;
+    margin-left: 20px;
+  }
+
+  .slot-capacity {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  .slot-badge {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .slot-badge.open {
+    background: var(--green-pale);
+    color: var(--green-mid);
+  }
+
+  .slot-badge.full {
+    background: #fde8e3;
+    color: var(--full);
+  }
+
+  .btn-book {
+    background: var(--green-mid);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .btn-book:hover {
+    background: var(--green-dark);
+  }
+
+  .btn-book:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+
+  .btn-delivery {
+    display: inline-block;
+    background: var(--green-mid);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.1s;
+  }
+
+  .btn-delivery:hover {
+    background: var(--green-dark);
+    transform: translateY(-1px);
+  }
+
+  .stock-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 10px;
+  }
+
+  .stock-item {
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    border: 1.5px solid;
+  }
+
+  .stock-item.available {
+    background: var(--green-pale);
+    color: var(--green-dark);
+    border-color: var(--green-light);
+  }
+
+  .stock-item.unavailable {
+    background: #f5f5f5;
+    color: #999;
+    border-color: #ddd;
+    text-decoration: line-through;
+  }
+
+  .loading {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 600px) {
+    .slot-card {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .slot-info {
+      margin-left: 0;
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+
+    .stock-grid {
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>West Midlands Multibank</h1>
+    <p class="subtitle">Collection Slot Booking System</p>
+  </header>
+
+  <div class="section">
+    <h2 class="section-title">📅 Available Collection Slots - Tuesday 17 Feb</h2>
+    <div id="slots-container">
+      <div class="loading">Loading slots...</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">📦 Current Stock Availability</h2>
+    <div id="stock-container">
+      <div class="loading">Loading stock...</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">🚚 Request a Delivery</h2>
+    <p style="margin-bottom: 16px; color: var(--text-secondary);">
+      Can't make it to the warehouse? Request a delivery for Wednesday or Thursday. 
+      Fill in the delivery order form to select items and arrange your delivery slot.
+    </p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf22sC0RMW7iE0fOxMGlMp3JQZ-5j71L19XyCXgi8482izHYA/viewform" 
+       target="_blank" 
+       class="btn-delivery">
+      📋 Open Delivery Order Form
+    </a>
+    <p style="margin-top: 12px; font-size: 0.85rem; color: var(--text-muted);">
+      Form opens in a new window. Stock is allocated on a first-come-first-served basis.
+    </p>
+  </div>
+</div>
+
+<script>
+  // API base URL - change this when deploying
+  const API_URL = window.location.origin;
+
+  // Load slots
+  async function loadSlots() {
+    try {
+      const response = await fetch(`${API_URL}/api/slots`);
+      const data = await response.json();
+      
+      const container = document.getElementById('slots-container');
+      container.innerHTML = '';
+
+      data.slots.forEach(slot => {
+        const isFull = slot.available === 0;
+        
+        const slotCard = document.createElement('div');
+        slotCard.className = `slot-card ${isFull ? 'full' : ''}`;
+        
+        slotCard.innerHTML = `
+          <div>
+            <div class="slot-time">${slot.time_start} - ${slot.time_end}</div>
+            <div class="slot-info">
+              <div class="slot-capacity">
+                ${slot.available} of ${slot.capacity} spaces available
+              </div>
+            </div>
+          </div>
+          ${isFull 
+            ? '<span class="slot-badge full">Full</span>'
+            : '<button class="btn-book" onclick="bookSlot(' + slot.id + ')">Book This Slot</button>'
+          }
+        `;
+        
+        container.appendChild(slotCard);
+      });
+    } catch (error) {
+      console.error('Error loading slots:', error);
+      document.getElementById('slots-container').innerHTML = 
+        '<p style="color: red;">Error loading slots. Please refresh the page.</p>';
+    }
+  }
+
+  // Load stock
+  async function loadStock() {
+    try {
+      const response = await fetch(`${API_URL}/api/stock`);
+      const data = await response.json();
+      
+      const container = document.getElementById('stock-container');
+      container.innerHTML = '';
+      
+      const grid = document.createElement('div');
+      grid.className = 'stock-grid';
+
+      data.stock.forEach(item => {
+        const stockItem = document.createElement('div');
+        stockItem.className = `stock-item ${item.available ? 'available' : 'unavailable'}`;
+        stockItem.textContent = item.name;
+        grid.appendChild(stockItem);
+      });
+      
+      container.appendChild(grid);
+    } catch (error) {
+      console.error('Error loading stock:', error);
+      document.getElementById('stock-container').innerHTML = 
+        '<p style="color: red;">Error loading stock. Please refresh the page.</p>';
+    }
+  }
+
+  // Book a slot (placeholder - will add proper booking form later)
+  function bookSlot(slotId) {
+    alert(`Booking slot ${slotId}. Booking form coming soon!`);
+    // TODO: Show booking form modal with partner name and reference fields
+  }
+
+  // Load data on page load
+  window.addEventListener('DOMContentLoaded', () => {
+    loadSlots();
+    loadStock();
+  });
+</script>
+
+</body>
+</html>
