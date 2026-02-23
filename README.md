@@ -43,7 +43,7 @@ The server will start at `http://127.0.0.1:8000`
 
 ## Deployment Options
 
-### Option 1: Glide App (Recommended - No Code Required)
+### Glide App (Recommended - No Code Required)
 
 Build a no-code mobile app using Glide that connects to your Google Sheets:
 
@@ -55,28 +55,7 @@ Build a no-code mobile app using Glide that connects to your Google Sheets:
 6. Publish and share with partners
 
 **Cost:** Free tier available, £25/month for premium features
-**Setup time:** 1 day
 **Best for:** Quick deployment with existing Google Sheets workflow
-
-### Option 2: Python Backend Deployment (Advanced)
-
-If you want to use this FastAPI backend instead:
-
-**Deploy to Railway:**
-1. Go to [railway.app](https://railway.app)
-2. Sign in with GitHub
-3. Click "New Project" → "Deploy from GitHub repo"
-4. Select this repository
-5. Railway will automatically detect it's a Python app and deploy
-
-**Deploy to Render:**
-1. Go to [render.com](https://render.com)
-2. Sign in with GitHub
-3. Click "New +" → "Web Service"
-4. Connect this repository
-5. Use these settings:
-   - **Build Command**: `pip install -r backend/requirements.txt`
-   - **Start Command**: `uvicorn backend.main:app --host 0.0.0.0 --port $PORT`
 
 ## Current Features
 
@@ -99,7 +78,6 @@ If you want to use this FastAPI backend instead:
 - **Frontend**: Glide mobile app builder
 - **Database**: Google Sheets (existing workflow)
 - **Hosting**: Glide platform (free/paid tier)
-- **Setup time**: 1 day
 
 **Alternative: Custom Python Backend**
 - **Backend**: FastAPI (Python)
@@ -109,4 +87,4 @@ If you want to use this FastAPI backend instead:
 
 ## Contact
 
-Built for West Midlands Multibank by WhatsOn.Agency
+Built for Multidatabank by WhatsOn.Agency
