@@ -1,112 +1,98 @@
-# West Midlands Multibank - Booking System
+# Multidatabank - Booking System
 
-A simple slot booking system for the West Midlands Multibank collection service.
+A simple slot booking system for the Multidatabank collection service.
 
 ## Project Structure
 
+This repository contains design mockups and documentation for the Multidatabank booking system built with Glide.
+
 ```
-multibank-booking/
-├── backend/
-│   ├── main.py              # FastAPI application
-│   ├── requirements.txt     # Python dependencies
-│   └── models.py           # Database models (coming soon)
-├── frontend/
-│   └── index.html          # Web interface
-└── README.md               # This file
-```
-
-## Local Development Setup
-
-### 1. Install Dependencies
-
-```bash
-cd backend
-pip install -r requirements.txt
+multidatabank-booking/
+├── docs/
+│   └── multidatabank-glide-mockup.html    # Visual design mockup
+├── backend/                            # Reference code (not used in Glide)
+│   ├── main.py
+│   └── requirements.txt
+├── frontend/                           # Reference design (not used in Glide)
+│   └── index.html
+└── README.md
 ```
 
-### 2. Run the Server
+## Setup Instructions
 
-```bash
-# From the backend directory
-uvicorn main:app --reload
-```
+The actual app is built in Glide using Google Sheets as the database. This repository serves as:
 
-The server will start at `http://127.0.0.1:8000`
+## Deployment
 
-### 3. View the App
+### Glide App (No-Code Solution)
 
-- **API Root**: http://127.0.0.1:8000
-- **API Docs**: http://127.0.0.1:8000/docs (automatic Swagger docs)
-- **Frontend**: http://127.0.0.1:8000/app
-- **Slots API**: http://127.0.0.1:8000/api/slots
-- **Stock API**: http://127.0.0.1:8000/api/stock
-
-## Deployment Options
-
-### Option 1: Glide App (Recommended - No Code Required)
-
-Build a no-code mobile app using Glide that connects to your Google Sheets:
+Build a mobile-friendly app using Glide that connects to your Google Sheets:
 
 1. Go to [glideapps.com](https://glideapps.com)
 2. Sign up with your Google account
 3. Create "New App from Google Sheets"
-4. Connect your Multibank booking spreadsheet
+4. Connect your Multidatabank booking spreadsheet
 5. Configure partner booking interface and admin dashboard
 6. Publish and share with partners
 
 **Cost:** Free tier available, £25/month for premium features
-**Setup time:** 1 day
 **Best for:** Quick deployment with existing Google Sheets workflow
 
-### Option 2: Python Backend Deployment (Advanced)
+See the [visual mockup](docs/multibank-glide-mockup.html) for the complete design.
 
-If you want to use this FastAPI backend instead:
+## Setup Instructions
 
-**Deploy to Railway:**
-1. Go to [railway.app](https://railway.app)
-2. Sign in with GitHub
-3. Click "New Project" → "Deploy from GitHub repo"
-4. Select this repository
-5. Railway will automatically detect it's a Python app and deploy
+The actual app is built in Glide using Google Sheets as the database. This repository serves as:
+- Design documentation and mockups
+- Reference implementation for the booking system
+- Project management via GitHub Issues and Projects
 
-**Deploy to Render:**
-1. Go to [render.com](https://render.com)
-2. Sign in with GitHub
-3. Click "New +" → "Web Service"
-4. Connect this repository
-5. Use these settings:
-   - **Build Command**: `pip install -r backend/requirements.txt`
-   - **Start Command**: `uvicorn backend.main:app --host 0.0.0.0 --port $PORT`
+## Features
 
-## Current Features
+✅ Mobile-responsive slot booking interface
+✅ Real-time stock availability display
+✅ Partner booking form with validation
+✅ Delivery order integration
+✅ Admin dashboard for warehouse staff
+✅ Automatic email confirmations
+✅ Google Sheets as database (familiar workflow for staff)
+✅ No server maintenance required
 
-✅ View available booking slots
-✅ See current stock availability
-✅ Mobile-responsive interface
-✅ Clean API with automatic documentation
+## Implementation Workflow
 
-## Coming Soon
+1. **Design Phase** (Complete)
+   - UI/UX mockups created
+   - User flows documented
+   - Data structure planned
 
-- 📝 Booking form with partner name and reference
-- 💾 SQLite database for real data storage
-- 📧 Email confirmations
-- 🔐 Admin dashboard for warehouse staff
-- 📊 Booking history and reporting
+2. **Google Sheets Setup** (Next)
+   - Create booking slots table
+   - Create partners table  
+   - Create stock inventory table
+   - Set up delivery orders tracking
+
+3. **Glide Build** (In Progress)
+   - Connect Google Sheets to Glide
+   - Build partner booking interface
+   - Build admin dashboard
+   - Configure email notifications
+   - Test and deploy
+
+## Team Collaboration
+
+This GitHub repository is used for:
+- 📋 **Project Board**: Track tasks and progress
+- 📝 **Issues**: Bug reports and feature requests
+- 📁 **Documentation**: Design files and mockups
+- 👥 **Team Communication**: Code reviews and discussions
 
 ## Tech Stack
 
-**Recommended: Glide No-Code App**
-- **Frontend**: Glide mobile app builder
-- **Database**: Google Sheets (existing workflow)
-- **Hosting**: Glide platform (free/paid tier)
-- **Setup time**: 1 day
-
-**Alternative: Custom Python Backend**
-- **Backend**: FastAPI (Python)
-- **Frontend**: Plain HTML/CSS/JavaScript (no framework needed)
-- **Database**: SQLite → PostgreSQL (migration path ready)
-- **Hosting**: Railway or Render (free tier)
+- **Platform**: Glide (no-code app builder)
+- **Database**: Google Sheets
+- **Frontend**: Mobile-responsive Glide interface
+- **Hosting**: Glide platform
 
 ## Contact
 
-Built for West Midlands Multibank by WhatsOn.Agency
+Built for Multidatabank by WhatsOn.Agency
