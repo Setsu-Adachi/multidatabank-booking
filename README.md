@@ -1,6 +1,7 @@
 # West Midlands Multibank - Booking System
 
 A simple slot booking system for the West Midlands Multibank collection service.
+**[📱 View Design Mockup](docs/multidatabank-glide-mockup.html)** - See the complete visual design for the Glide app
 
 ## Project Structure
 
