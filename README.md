@@ -41,18 +41,35 @@ The server will start at `http://127.0.0.1:8000`
 - **Slots API**: http://127.0.0.1:8000/api/slots
 - **Stock API**: http://127.0.0.1:8000/api/stock
 
-## Deployment
+## Deployment Options
 
-### Deploy to Railway
+### Option 1: Glide App (Recommended - No Code Required)
 
+Build a no-code mobile app using Glide that connects to your Google Sheets:
+
+1. Go to [glideapps.com](https://glideapps.com)
+2. Sign up with your Google account
+3. Create "New App from Google Sheets"
+4. Connect your Multibank booking spreadsheet
+5. Configure partner booking interface and admin dashboard
+6. Publish and share with partners
+
+**Cost:** Free tier available, £25/month for premium features
+**Setup time:** 1 day
+**Best for:** Quick deployment with existing Google Sheets workflow
+
+### Option 2: Python Backend Deployment (Advanced)
+
+If you want to use this FastAPI backend instead:
+
+**Deploy to Railway:**
 1. Go to [railway.app](https://railway.app)
 2. Sign in with GitHub
 3. Click "New Project" → "Deploy from GitHub repo"
 4. Select this repository
 5. Railway will automatically detect it's a Python app and deploy
 
-### Deploy to Render
-
+**Deploy to Render:**
 1. Go to [render.com](https://render.com)
 2. Sign in with GitHub
 3. Click "New +" → "Web Service"
@@ -78,6 +95,13 @@ The server will start at `http://127.0.0.1:8000`
 
 ## Tech Stack
 
+**Recommended: Glide No-Code App**
+- **Frontend**: Glide mobile app builder
+- **Database**: Google Sheets (existing workflow)
+- **Hosting**: Glide platform (free/paid tier)
+- **Setup time**: 1 day
+
+**Alternative: Custom Python Backend**
 - **Backend**: FastAPI (Python)
 - **Frontend**: Plain HTML/CSS/JavaScript (no framework needed)
 - **Database**: SQLite → PostgreSQL (migration path ready)
