@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>West Midlands Multibank – Glide App Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark: #1a3a2a;
+    --green-mid: #2d6a4f;
+    --green-light: #74c69d;
+    --green-pale: #d8f3dc;
+    --cream: #faf7f2;
+    --warm-white: #ffffff;
+    --text-primary: #1a2e1f;
+    --text-secondary: #4a6655;
+    --text-muted: #8aaa96;
+    --border: #e0ede5;
+    --available: #52b788;
+    --booked: #e07a5f;
+    --warning: #f4a261;
+    --shadow: 0 2px 16px rgba(26,58,42,0.10);
+    --shadow-lg: 0 8px 40px rgba(26,58,42,0.15);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #e8ede9;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    color: var(--text-primary);
+  }
+
+  h1, h2, h3 {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+  }
+
+  /* ── PAGE TITLE ── */
+  .page-header {
+    text-align: center;
+    margin-bottom: 48px;
+    max-width: 700px;
+  }
+  .page-header .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green-mid);
+    margin-bottom: 8px;
+  }
+  .page-header h1 {
+    font-size: 2.4rem;
+    color: var(--green-dark);
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .page-header p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* ── DEVICE FRAMES ROW ── */
+  .devices-row {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1100px;
+    margin-bottom: 56px;
+  }
+
+  .device-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .device-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* Phone frame */
+  .phone-frame {
+    width: 280px;
+    height: 580px;
+    background: var(--green-dark);
+    border-radius: 36px;
+    padding: 10px;
+    box-shadow: var(--shadow-lg), inset 0 0 0 1px rgba(255,255,255,0.08);
+    position: relative;
+    flex-shrink: 0;
+  }
+  .phone-notch {
+    width: 80px;
+    height: 22px;
+    background: var(--green-dark);
+    border-radius: 0 0 14px 14px;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+  }
+  .phone-screen {
+    width: 100%;
+    height: 100%;
+    background: var(--cream);
+    border-radius: 28px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Tablet frame */
+  .tablet-frame {
+    width: 460px;
+    height: 580px;
+    background: var(--green-dark);
+    border-radius: 24px;
+    padding: 12px;
+    box-shadow: var(--shadow-lg), inset 0 0 0 1px rgba(255,255,255,0.08);
+    flex-shrink: 0;
+  }
+  .tablet-screen {
+    width: 100%;
+    height: 100%;
+    background: var(--cream);
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── SCREEN CONTENTS ── */
+
+  /* Top bar */
+  .screen-topbar {
+    background: var(--green-dark);
+    color: white;
+    padding: 14px 16px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .screen-topbar .logo-mark {
+    width: 30px;
+    height: 30px;
+    background: var(--green-light);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 14px;
+    color: var(--green-dark);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .screen-topbar .title-block h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+  }
+  .screen-topbar .title-block p {
+    font-size: 10px;
+    color: var(--green-light);
+    opacity: 0.8;
+  }
+
+  /* Screen scroll area */
+  .screen-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .screen-body::-webkit-scrollbar { display: none; }
+
+  /* Week banner */
+  .week-banner {
+    background: var(--green-mid);
+    color: white;
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-align: center;
+  }
+
+  /* Day tabs */
+  .day-tabs {
+    display: flex;
+    gap: 5px;
+    overflow-x: auto;
+  }
+  .day-tabs::-webkit-scrollbar { display: none; }
+  .day-tab {
+    flex-shrink: 0;
+    background: var(--warm-white);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 10px;
+    text-align: center;
+    cursor: pointer;
+  }
+  .day-tab.active {
+    background: var(--green-dark);
+    border-color: var(--green-dark);
+    color: white;
+  }
+  .day-tab .day-name { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.7; }
+  .day-tab .day-num { font-size: 15px; font-weight: 700; margin-top: 1px; }
+  .day-tab.active .day-name, .day-tab.active .day-num { color: white; opacity: 1; }
+
+  /* Section heading */
+  .section-head {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  /* Slot card */
+  .slot-card {
+    background: var(--warm-white);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 11px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: box-shadow 0.15s;
+  }
+  .slot-card:hover { box-shadow: var(--shadow); }
+  .slot-card.booked { opacity: 0.55; }
+  .slot-time {
+    flex-shrink: 0;
+    text-align: center;
+  }
+  .slot-time .t { font-size: 12px; font-weight: 700; color: var(--text-primary); }
+  .slot-time .sep { font-size: 9px; color: var(--text-muted); }
+  .slot-info { flex: 1; min-width: 0; }
+  .slot-info .slots-text { font-size: 11px; font-weight: 600; color: var(--text-secondary); }
+  .slot-info .partner-list { font-size: 10px; color: var(--text-muted); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .slot-badge {
+    flex-shrink: 0;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+  }
+  .slot-badge.open { background: var(--green-pale); color: var(--green-mid); }
+  .slot-badge.full { background: #fde8e3; color: var(--booked); }
+  .slot-badge.yours { background: #fef3e2; color: var(--warning); }
+
+  /* Booking form */
+  .form-card {
+    background: var(--warm-white);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .form-card .form-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+    margin-bottom: 2px;
+  }
+  .form-field label {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .form-field .fake-input {
+    background: var(--cream);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 12px;
+    color: var(--text-primary);
+    font-family: 'DM Sans', sans-serif;
+  }
+  .form-field .fake-input.placeholder { color: var(--text-muted); }
+  .btn-book {
+    background: var(--green-mid);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 11px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 2px;
+  }
+  .btn-book.secondary {
+    background: var(--cream);
+    color: var(--green-mid);
+    border: 1.5px solid var(--border);
+  }
+
+  /* Stock pill list */
+  .stock-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .stock-pill {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 4px 9px;
+    border-radius: 20px;
+    background: var(--green-pale);
+    color: var(--green-dark);
+    border: 1px solid rgba(45,106,79,0.15);
+  }
+  .stock-pill.low {
+    background: #fef3e2;
+    color: #b5622a;
+    border-color: rgba(181,98,42,0.15);
+  }
+
+  /* Success confirmation */
+  .confirm-banner {
+    background: var(--green-mid);
+    border-radius: 12px;
+    padding: 14px;
+    text-align: center;
+    color: white;
+  }
+  .confirm-banner .tick {
+    font-size: 24px;
+    margin-bottom: 6px;
+  }
+  .confirm-banner h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .confirm-banner p {
+    font-size: 11px;
+    opacity: 0.85;
+    line-height: 1.5;
+  }
+
+  /* Bottom nav */
+  .bottom-nav {
+    background: var(--warm-white);
+    border-top: 1px solid var(--border);
+    padding: 8px 12px;
+    display: flex;
+    justify-content: space-around;
+    flex-shrink: 0;
+  }
+  .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    cursor: pointer;
+  }
+  .nav-item .icon { font-size: 16px; }
+  .nav-item .nav-label { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); }
+  .nav-item.active .nav-label { color: var(--green-mid); }
+  .nav-item.active .icon { filter: none; }
+
+  /* ── ADMIN TABLET VIEW ── */
+  .admin-topbar {
+    background: var(--green-dark);
+    color: white;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .admin-topbar .left { display: flex; align-items: center; gap: 10px; }
+  .admin-topbar h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: white;
+  }
+  .admin-topbar .badge {
+    background: var(--green-light);
+    color: var(--green-dark);
+    font-size: 9px;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  .admin-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .admin-body::-webkit-scrollbar { display: none; }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .stat-tile {
+    background: var(--warm-white);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+  }
+  .stat-tile .num {
+    font-size: 22px;
+    font-family: 'DM Serif Display', serif;
+    color: var(--green-dark);
+    line-height: 1;
+  }
+  .stat-tile .lbl {
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-muted);
+    margin-top: 3px;
+  }
+  .stat-tile.highlight { background: var(--green-mid); border-color: var(--green-mid); }
+  .stat-tile.highlight .num, .stat-tile.highlight .lbl { color: white; opacity: 1; }
+
+  .admin-table {
+    background: var(--warm-white);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .admin-table-head {
+    background: var(--green-pale);
+    display: grid;
+    grid-template-columns: 1fr 1fr 80px 60px;
+    padding: 8px 12px;
+    gap: 8px;
+  }
+  .admin-table-head span {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--green-mid);
+  }
+  .admin-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 80px 60px;
+    padding: 9px 12px;
+    gap: 8px;
+    border-top: 1px solid var(--border);
+    align-items: center;
+  }
+  .admin-row .name { font-size: 11px; font-weight: 600; color: var(--text-primary); }
+  .admin-row .ref { font-size: 11px; color: var(--text-secondary); }
+  .admin-row .time { font-size: 10px; font-weight: 600; color: var(--text-secondary); }
+  .status-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 4px;
+    flex-shrink: 0;
+  }
+  .status-dot.arrived { background: var(--available); }
+  .status-dot.expected { background: var(--warning); }
+  .status-dot.cancelled { background: var(--booked); }
+  .admin-row .status-cell {
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+
+  .stock-admin {
+    background: var(--warm-white);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .stock-admin-head {
+    background: var(--green-pale);
+    padding: 8px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .stock-admin-head span {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--green-mid);
+  }
+  .stock-admin-head .edit-btn {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--green-mid);
+    cursor: pointer;
+    background: white;
+    border: 1px solid var(--border);
+    padding: 2px 8px;
+    border-radius: 6px;
+  }
+  .stock-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 12px;
+    border-top: 1px solid var(--border);
+  }
+  .stock-row .item-name { font-size: 11px; font-weight: 500; color: var(--text-primary); }
+  .toggle {
+    width: 30px;
+    height: 16px;
+    background: var(--available);
+    border-radius: 10px;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .toggle::after {
+    content: '';
+    width: 12px; height: 12px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    right: 2px; top: 2px;
+  }
+  .toggle.off { background: #ddd; }
+  .toggle.off::after { left: 2px; right: auto; }
+
+  /* ── SHEET COMPARISON ── */
+  .comparison {
+    max-width: 780px;
+    width: 100%;
+    margin-bottom: 48px;
+  }
+  .comparison h2 {
+    font-size: 1.5rem;
+    color: var(--green-dark);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .compare-col {
+    background: var(--warm-white);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .compare-col .col-head {
+    padding: 12px 16px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .compare-col.before .col-head { background: #fde8e3; color: var(--booked); }
+  .compare-col.after .col-head { background: var(--green-pale); color: var(--green-mid); }
+  .compare-item {
+    padding: 9px 16px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.4;
+  }
+  .compare-item .ic { flex-shrink: 0; font-size: 13px; }
+
+  /* ── SETUP STEPS ── */
+  .setup-steps {
+    max-width: 680px;
+    width: 100%;
+    margin-bottom: 48px;
+  }
+  .setup-steps h2 {
+    font-size: 1.5rem;
+    color: var(--green-dark);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .step {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 16px;
+  }
+  .step-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--green-dark);
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .step-content h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .step-content p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  .step-content .code {
+    background: var(--green-pale);
+    border: 1px solid rgba(45,106,79,0.2);
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-family: monospace;
+    font-size: 11px;
+    color: var(--green-dark);
+    margin-top: 6px;
+    display: inline-block;
+  }
+  .connector {
+    width: 2px;
+    height: 16px;
+    background: var(--border);
+    margin-left: 15px;
+    margin-bottom: 0;
+  }
+
+  /* cost badge */
+  .cost-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--green-pale);
+    border: 1.5px solid rgba(45,106,79,0.2);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--green-dark);
+    margin-top: 8px;
+  }
+
+  @media (max-width: 620px) {
+    .devices-row { flex-direction: column; align-items: center; }
+    .tablet-frame { width: 340px; }
+    .compare-grid { grid-template-columns: 1fr; }
+    .page-header h1 { font-size: 1.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="label">Proposed Solution</div>
+  <h1>West Midlands Multibank<br>Glide App Design</h1>
+  <p>A no-code app built on your existing Google Sheet — partners book collection slots on their phone, request deliveries, warehouse staff manage arrivals on a tablet, admins see everything at a glance.</p>
+  <div class="cost-badge">💷 £0 to start &nbsp;·&nbsp; 1 day to build &nbsp;·&nbsp; No server to maintain</div>
+</div>
+
+<!-- DEVICE MOCKUPS -->
+<div class="devices-row">
+
+  <!-- PHONE: Partner View – Booking -->
+  <div class="device-block">
+    <div class="device-label">Partner View · Mobile</div>
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="screen-topbar">
+          <div class="logo-mark">M</div>
+          <div class="title-block">
+            <h3>Multibank Bookings</h3>
+            <p>West Midlands · w/c 16 Feb</p>
+          </div>
+        </div>
+        <div class="screen-body">
+          <div class="week-banner">Week commencing 16 Feb 2026</div>
+
+          <div class="day-tabs">
+            <div class="day-tab">
+              <div class="day-name">Mon</div>
+              <div class="day-num">16</div>
+            </div>
+            <div class="day-tab active">
+              <div class="day-name">Tue</div>
+              <div class="day-num">17</div>
+            </div>
+            <div class="day-tab">
+              <div class="day-name">Wed</div>
+              <div class="day-num">18</div>
+            </div>
+            <div class="day-tab">
+              <div class="day-name">Thu</div>
+              <div class="day-num">19</div>
+            </div>
+          </div>
+
+          <div class="section-head">AM Slots · Tuesday 17th</div>
+
+          <div class="slot-card">
+            <div class="slot-time">
+              <div class="t">09:15</div>
+              <div class="sep">─</div>
+              <div class="t">10:00</div>
+            </div>
+            <div class="slot-info">
+              <div class="slots-text">2 of 4 available</div>
+              <div class="partner-list">Mandeep, Kristian booked</div>
+            </div>
+            <div class="slot-badge open">Open</div>
+          </div>
+
+          <div class="slot-card booked">
+            <div class="slot-time">
+              <div class="t">10:00</div>
+              <div class="sep">─</div>
+              <div class="t">10:45</div>
+            </div>
+            <div class="slot-info">
+              <div class="slots-text">0 of 4 available</div>
+              <div class="partner-list">Gillian, Shabir, Chanelle, Suzi</div>
+            </div>
+            <div class="slot-badge full">Full</div>
+          </div>
+
+          <div class="slot-card">
+            <div class="slot-time">
+              <div class="t">10:45</div>
+              <div class="sep">─</div>
+              <div class="t">11:30</div>
+            </div>
+            <div class="slot-info">
+              <div class="slots-text">3 of 4 available</div>
+              <div class="partner-list">Worth Unlimited booked</div>
+            </div>
+            <div class="slot-badge open">Open</div>
+          </div>
+
+          <div class="section-head" style="margin-top:4px;">Available Stock Today</div>
+          <div class="stock-grid">
+            <div class="stock-pill">Toothpaste</div>
+            <div class="stock-pill">Hand Sanitiser</div>
+            <div class="stock-pill">Cleaning Products</div>
+            <div class="stock-pill">Baby Clothes</div>
+            <div class="stock-pill low">Toys ⚠</div>
+            <div class="stock-pill">Stationery</div>
+            <div class="stock-pill low">Bulbs ⚠</div>
+            <div class="stock-pill">Gift Sets</div>
+          </div>
+
+          <div class="section-head" style="margin-top:8px;">Request Delivery</div>
+          <div class="form-card" style="background: linear-gradient(135deg, #d8f3dc 0%, #b7dfc7 100%); border-color: #74c69d;">
+            <div style="text-align: center;">
+              <div style="font-size: 32px; margin-bottom: 6px;">🚚</div>
+              <div style="font-size: 12px; font-weight: 600; color: #1a3a2a; margin-bottom: 4px;">Can't visit the warehouse?</div>
+              <div style="font-size: 10px; color: #2d6a4f; margin-bottom: 10px; line-height: 1.4;">Order delivery for Wed or Thu using our form</div>
+              <div class="btn-book" style="background: #2d6a4f; font-size: 12px; padding: 9px;">📋 Open Delivery Form</div>
+            </div>
+          </div>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-item active">
+            <div class="icon">📅</div>
+            <div class="nav-label">Slots</div>
+          </div>
+          <div class="nav-item">
+            <div class="icon">📦</div>
+            <div class="nav-label">Stock</div>
+          </div>
+          <div class="nav-item">
+            <div class="icon">🚚</div>
+            <div class="nav-label">Delivery</div>
+          </div>
+          <div class="nav-item">
+            <div class="icon">👤</div>
+            <div class="nav-label">My Info</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHONE: Booking Form + Confirmation -->
+  <div class="device-block">
+    <div class="device-label">Partner View · Book a Slot</div>
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="screen-topbar">
+          <div class="logo-mark">M</div>
+          <div class="title-block">
+            <h3>Book: Tue 17 Feb</h3>
+            <p>10:45 – 11:30 · 3 spaces left</p>
+          </div>
+        </div>
+        <div class="screen-body">
+
+          <div class="confirm-banner" style="background:#e8f5ee; border: 1.5px solid #b7dfc7;">
+            <div class="tick">✅</div>
+            <h3 style="color:#1a3a2a;">Booking Confirmed!</h3>
+            <p style="color:#2d6a4f;">WhatsOn Databank, ref 145<br>Tuesday 17 Feb · 14:30 – 15:15<br>Confirmation sent to your email.</p>
+          </div>
+
+          <div class="form-card">
+            <div class="form-title">Your Details</div>
+            <div class="form-field">
+              <label>Organisation / Name</label>
+              <div class="fake-input">WhatsOn Databank</div>
+            </div>
+            <div class="form-field">
+              <label>Partner Reference</label>
+              <div class="fake-input">145</div>
+            </div>
+            <div class="form-field">
+              <label>Contact Email</label>
+              <div class="fake-input">databank@whatson.agency</div>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <div class="form-title">Selected Slot</div>
+            <div class="form-field">
+              <label>Date</label>
+              <div class="fake-input">Tuesday 17 February 2026</div>
+            </div>
+            <div class="form-field">
+              <label>Time</label>
+              <div class="fake-input">14:30 – 15:15 (45 mins)</div>
+            </div>
+            <div class="form-field">
+              <label>Visit Type</label>
+              <div class="fake-input">Collection (walk-in)</div>
+            </div>
+          </div>
+
+          <div class="btn-book">Confirm Booking</div>
+          <div class="btn-book secondary">← Back to Slots</div>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-item active">
+            <div class="icon">📅</div>
+            <div class="nav-label">Slots</div>
+          </div>
+          <div class="nav-item">
+            <div class="icon">📦</div>
+            <div class="nav-label">Stock</div>
+          </div>
+          <div class="nav-item">
+            <div class="icon">🚚</div>
+            <div class="nav-label">Delivery</div>
+          </div>
+          <div class="nav-item">
+            <div class="icon">👤</div>
+            <div class="nav-label">My Info</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABLET: Admin View -->
+  <div class="device-block">
+    <div class="device-label">Admin / Warehouse View · Tablet</div>
+    <div class="tablet-frame">
+      <div class="tablet-screen">
+        <div class="admin-topbar">
+          <div class="left">
+            <div class="logo-mark" style="width:26px;height:26px;font-size:12px;background:#74c69d;">M</div>
+            <h3>Warehouse Dashboard</h3>
+            <div class="badge">ADMIN</div>
+          </div>
+          <div style="font-size:11px;color:#74c69d;">Tue 17 Feb</div>
+        </div>
+        <div class="admin-body">
+
+          <div class="stat-row">
+            <div class="stat-tile highlight">
+              <div class="num">14</div>
+              <div class="lbl">Today's Bookings</div>
+            </div>
+            <div class="stat-tile">
+              <div class="num">6</div>
+              <div class="lbl">Arrived</div>
+            </div>
+            <div class="stat-tile">
+              <div class="num">8</div>
+              <div class="lbl">Expected</div>
+            </div>
+          </div>
+
+          <div class="section-head">Today's Collection List · 10:45 – 11:30</div>
+
+          <div class="admin-table">
+            <div class="admin-table-head">
+              <span>Organisation</span>
+              <span>Ref</span>
+              <span>Time</span>
+              <span>Status</span>
+            </div>
+            <div class="admin-row">
+              <div class="name">Worth Unlimited</div>
+              <div class="ref">57</div>
+              <div class="time">10:45</div>
+              <div class="status-cell"><span class="status-dot arrived"></span>In</div>
+            </div>
+            <div class="admin-row">
+              <div class="name">WhatsOn Databank</div>
+              <div class="ref">145</div>
+              <div class="time">14:30</div>
+              <div class="status-cell"><span class="status-dot expected"></span>Due</div>
+            </div>
+            <div class="admin-row">
+              <div class="name">Kajol</div>
+              <div class="ref">6</div>
+              <div class="time">10:45</div>
+              <div class="status-cell"><span class="status-dot arrived"></span>In</div>
+            </div>
+            <div class="admin-row">
+              <div class="name">Gail</div>
+              <div class="ref">72</div>
+              <div class="time">10:45</div>
+              <div class="status-cell"><span class="status-dot expected"></span>Due</div>
+            </div>
+          </div>
+
+          <div class="section-head">Stock Availability · Update Live</div>
+
+          <div class="stock-admin">
+            <div class="stock-admin-head">
+              <span>Item</span>
+              <span class="edit-btn">Edit All</span>
+            </div>
+            <div class="stock-row">
+              <div class="item-name">Toothpaste</div>
+              <div class="toggle"></div>
+            </div>
+            <div class="stock-row">
+              <div class="item-name">Cleaning Products</div>
+              <div class="toggle"></div>
+            </div>
+            <div class="stock-row">
+              <div class="item-name">Toys / Children</div>
+              <div class="toggle off"></div>
+            </div>
+            <div class="stock-row">
+              <div class="item-name">Baby Formula (3pk)</div>
+              <div class="toggle"></div>
+            </div>
+            <div class="stock-row">
+              <div class="item-name">Electrical / Bulbs</div>
+              <div class="toggle off"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- BEFORE / AFTER COMPARISON -->
+<div class="comparison">
+  <h2>Before &amp; After</h2>
+  <div class="compare-grid">
+    <div class="compare-col before">
+      <div class="col-head">❌ &nbsp;Google Sheet Today</div>
+      <div class="compare-item"><span class="ic">⚠️</span>Two partners can overwrite the same cell simultaneously</div>
+      <div class="compare-item"><span class="ic">📵</span>Hard to use on a phone — small cells, easy to edit wrong row</div>
+      <div class="compare-item"><span class="ic">✉️</span>No automatic confirmation — partner must trust they booked correctly</div>
+      <div class="compare-item"><span class="ic">🔓</span>Any partner can accidentally edit or delete another booking</div>
+      <div class="compare-item"><span class="ic">📊</span>No usage data, no audit trail, no reporting</div>
+      <div class="compare-item"><span class="ic">🔄</span>Stock tab is manually updated — easily goes out of date</div>
+      <div class="compare-item"><span class="ic">📋</span>Separate Google Form for deliveries — partners need two different links</div>
+    </div>
+    <div class="compare-col after">
+      <div class="col-head">✅ &nbsp;Glide App</div>
+      <div class="compare-item"><span class="ic">🔒</span>Slots lock instantly when capacity is reached — no conflicts</div>
+      <div class="compare-item"><span class="ic">📱</span>Clean mobile interface — one tap to view slots, one tap to book</div>
+      <div class="compare-item"><span class="ic">📧</span>Automatic email confirmation sent the moment a slot is booked</div>
+      <div class="compare-item"><span class="ic">👁️</span>Partners can only see and edit their own bookings</div>
+      <div class="compare-item"><span class="ic">📈</span>Admin dashboard shows arrivals, no-shows, weekly usage totals</div>
+      <div class="compare-item"><span class="ic">⚡</span>Warehouse staff toggle stock on/off on a tablet in seconds</div>
+      <div class="compare-item"><span class="ic">🚚</span>One app for everything — collection booking AND delivery requests in one place</div>
+    </div>
+  </div>
+</div>
+
+<!-- SETUP STEPS -->
+<div class="setup-steps">
+  <h2>How to Build It · 1 Day</h2>
+
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-content">
+      <h4>Restructure the Google Sheet (2 hours)</h4>
+      <p>The existing sheet needs three clean tabs: <strong>Slots</strong> (one row per slot with date, time, capacity), <strong>Bookings</strong> (one row per booking, written by the app), and <strong>Stock</strong> (one row per item with an available yes/no column). This is the "database" — Glide reads and writes directly to it.</p>
+      <div class="code">Tabs: Slots · Bookings · Stock · Partners</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-content">
+      <h4>Connect to Glide (30 mins)</h4>
+      <p>Go to glideapps.com, create a free account, click "New App from Google Sheets", and paste in the sheet link. Glide immediately reads all columns and builds a basic app automatically. No code at all.</p>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-content">
+      <h4>Configure the Partner View (3 hours)</h4>
+      <p>Build the slot listing screen (filter by date, show available count), the booking form (name + reference → writes a row to Bookings), and the stock screen (read-only list from the Stock tab). Set a "Row Ownership" rule so each partner only sees their own bookings.</p>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <div class="step">
+    <div class="step-num">4</div>
+    <div class="step-content">
+      <h4>Configure the Admin View (2 hours)</h4>
+      <p>A separate tab in the app (password-protected or email-restricted) shows today's full booking list, allows marking arrivals, and lets warehouse staff toggle stock availability live. This writes directly back to the Stock tab in the sheet.</p>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <div class="step">
+    <div class="step-num">5</div>
+    <div class="step-content">
+      <h4>Add Email Confirmations via Apps Script (1 hour)</h4>
+      <p>A small Google Apps Script triggers when a new row appears in the Bookings tab and sends a confirmation email to the partner. This is the one piece of lightweight code — about 15 lines of JavaScript, nothing complex.</p>
+      <div class="code">function onFormSubmit(e) &#123; MailApp.sendEmail(...) &#125;</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <div class="step">
+    <div class="step-num">6</div>
+    <div class="step-content">
+      <h4>Publish and Share (30 mins)</h4>
+      <p>Glide generates a URL and a QR code. Share the link with all partners by email. Optionally set a cust
